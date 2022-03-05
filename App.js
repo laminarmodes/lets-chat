@@ -22,7 +22,7 @@ export default class App extends React.Component {
           initialRouteName="Start"
         >
           <Stack.Screen
-            name="Start"
+            name="Welcome"
             component={Start}
           />
           <Stack.Screen
