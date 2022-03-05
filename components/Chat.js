@@ -40,20 +40,16 @@ export default class Chat extends React.Component {
             firebase.initializeApp(firebaseConfig);
         }
         this.referenceChatMessages = firebase.firestore().collection('messages');
-        // this.refMsgsUser = null;
+
     }
 
     componentDidMount() {
 
         // Set the page title once Chat is loaded
         let { name } = this.props.route.params
+
         // Adds the name to top of screen
         this.props.navigation.setOptions({ title: name })
-
-        //this.referenceChatMessages = firebase.firestore().collection('messages');
-        // if (referenceChatMessages != null) {
-        //     this.unsubscribe = this.referenceChatMessages.onSnapshot(this.onCollectionUpdate)
-        // }
 
         // Let user sign in anonymously
         this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -63,7 +59,38 @@ export default class Chat extends React.Component {
             }
 
             this.setState({
-                messages: [],
+                messages: [
+                    // {
+                    //     _id: 1,
+                    //     text: 'Hello developer',
+                    //     createdAt: new Date(),
+                    //     user: {
+                    //         _id: 1,
+                    //         name: 'React Native',
+                    //         avatar: 'https://placeimg.com/140/140/any'
+                    //     }
+                    // },
+                    // {
+                    //     _id: 2,
+                    //     text: 'How are you?',
+                    //     createdAt: new Date(),
+                    //     user: {
+                    //         _id: 2,
+                    //         name: 'Guest',
+                    //         avatar: 'https://placeimg.com/140/140/any'
+                    //     }
+                    // },
+                    // {
+                    //     _id: 3,
+                    //     text: 'Hi',
+                    //     createdAt: new Date(),
+                    //     user: {
+                    //         _id: 3,
+                    //         name: 'React Native',
+                    //         avatar: 'https://placeimg.com/140/140/any'
+                    //     }
+                    // }
+                ],
                 uid: user.uid,
                 user: {
                     _id: user.uid,
@@ -72,15 +99,23 @@ export default class Chat extends React.Component {
                 },
             });
 
-            // create a reference to the active user's documents (messages)
+            // 1. Create a reference to the active user's documents (messages)
             this.unsubscribe = this.referenceChatMessages.orderBy("createdAt", "desc").onSnapshot(this.onCollectionUpdate);
+
+            // 2. Create entirely new observer
             this.referenceChatUser = firebase.firestore().collection("messages").where("uid", "==", this.state.uid);
 
-            // this.saveMessages()
+            // 3. Delete original listener
+            this.referenceChatMessages = firebase.firestore().collection('messages');
+            if (this.referenceChatMessages != null) {
+                this.unsubscribe = this.referenceChatMessages.onSnapshot(this.onCollectionUpdate)
+            }
+
         });
     }
 
     componentWillUnmount() {
+        this.authUnsubscribe();
         this.unsubscribe();
     }
 
@@ -118,6 +153,7 @@ export default class Chat extends React.Component {
             createdAt: message.createdAt,
             user: this.state.user
         });
+        // _id: this.state.uid,
     }
 
     onSend(messages = []) {
@@ -162,39 +198,3 @@ export default class Chat extends React.Component {
     };
 }
 
-
-
-        // this.setState({
-        //     messages: [
-        //         {
-        //             _id: 1,
-        //             text: 'Hello developer',
-        //             createdAt: new Date(),
-        //             user: {
-        //                 _id: 1,
-        //                 name: 'React Native',
-        //                 avatar: 'https://placeimg.com/140/140/any'
-        //             }
-        //         },
-        //         {
-        //             _id: 2,
-        //             text: 'How are you?',
-        //             createdAt: new Date(),
-        //             user: {
-        //                 _id: 2,
-        //                 name: 'Guest',
-        //                 avatar: 'https://placeimg.com/140/140/any'
-        //             }
-        //         },
-        //         {
-        //             _id: 3,
-        //             text: 'Hi',
-        //             createdAt: new Date(),
-        //             user: {
-        //                 _id: 3,
-        //                 name: 'React Native',
-        //                 avatar: 'https://placeimg.com/140/140/any'
-        //             }
-        //         }
-        //     ],
-        // });
