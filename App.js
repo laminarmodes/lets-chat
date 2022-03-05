@@ -7,6 +7,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Start from './components/Start';
 import Chat from './components/Chat';
 
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
 // Create the navigator
 const Stack = createStackNavigator();
 
