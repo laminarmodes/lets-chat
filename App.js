@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // Import the screens we want to navigate between
 import Start from './components/Start';
 import Chat from './components/Chat';
-
+import CustomActions from './components/CustomActions';
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 
@@ -14,6 +14,10 @@ import Chat from './components/Chat';
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
+
+  renderCustomActions = (props) => {
+    return <CustomActions {...props} />
+  };
 
   render() {
     return (
