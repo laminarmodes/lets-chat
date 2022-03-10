@@ -10,6 +10,8 @@ import MapView from 'react-native-maps';
 const firebase = require('firebase');
 require('firebase/firestore');
 
+import { collection, addDoc, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
