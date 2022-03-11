@@ -1,20 +1,10 @@
 import React from 'react';
 import { StyleSheet, Pressable, View, Text, Button, TextInput } from 'react-native';
-import { backgroundColor, borderLeftColor, color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { ImageBackground } from 'react-native';
 import { BlurView } from 'expo-blur';
-
-// Blurtint can be 'light', 'dark', 'default'
-
-// const myImage = { uri: "https://reactjs.org/logo-og.png" };
-
 import myImage from '../assets/blob-background.jpeg';
-
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faRegular, faFaceLaugh } from '@fortawesome/free-solid-svg-icons';
-import { back } from 'react-native/Libraries/Animated/Easing';
-import { text } from '@fortawesome/fontawesome-svg-core';
+import { faFaceLaugh } from '@fortawesome/free-solid-svg-icons';
 
 export default class Start extends React.Component {
 
@@ -114,9 +104,6 @@ const textColor = '#777';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'flex-start',
-        // alignItems: 'center',
-        // backgroundColor: 'gray'
     },
     image: {
         flex: 1,
@@ -125,13 +112,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     blurContainer: {
-        // height: 'auto',
-        // flexDirection: 'column',
-        // justifyContent: 'flex-start',
-        // alignItems: 'flex-start',
-        // padding: 24,
-        // borderRadius: 16,
-
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -143,8 +123,6 @@ const styles = StyleSheet.create({
     leftAlignedContainer: {
         height: 'auto',
         flexDirection: 'column',
-        // justifyContent: 'flex-start',
-        // alignItems: 'flex-start',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 16,
@@ -173,9 +151,6 @@ const styles = StyleSheet.create({
     },
     colorPicker: {
         flexDirection: 'row',
-        // justifyContent: 'space-between',
-        // alignItems: 'stretch',
-        // alignContent: 'stretch'
         marginTop: atomicRadius,
         marginBottom: sectionSpacing
     },
@@ -221,10 +196,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#c7ceea',
         marginEnd: circleMargin
     },
-    // startChattingButton: {
-    //     backgroundColor: 'purple',
-    //     height: 40,
-    //     borderRadius: 20,
-    //     marginTop: 30
-    // }
 })

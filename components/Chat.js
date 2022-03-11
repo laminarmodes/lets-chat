@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Platform, KeyboardAvoidingView } from 'react-native';
 import { GiftedChat, InputToolbar } from 'react-native-gifted-chat';
-import { back } from 'react-native/Libraries/Animated/Easing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
 import CustomActions from './CustomActions';
@@ -12,8 +11,6 @@ require('firebase/firestore');
 
 import { collection, addDoc, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAzCN2Nfra9KQTtrn9J40haL5G9eMFR6Kk",
     authDomain: "chat-38cf6.firebaseapp.com",
@@ -137,8 +134,6 @@ export default class Chat extends React.Component {
         this.unsubscribe();
     }
 
-
-
     // Set the message state to be the current data
     onCollectionUpdate = (querySnapshot) => {
         const messages = [];
@@ -185,7 +180,6 @@ export default class Chat extends React.Component {
             image: message.image || null,
             location: message.location || null
         });
-        // _id: this.state.uid,
     }
 
     onSend(messages = []) {
