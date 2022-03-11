@@ -118,7 +118,7 @@ export default class Chat extends React.Component {
                     // 3. Delete original listener
                     this.referenceChatMessages = firebase.firestore().collection('messages');
                     if (this.referenceChatMessages != null) {
-                        this.unsubscribe = this.referenceChatMessages.onSnapshot(this.onCollectionUpdate)
+                        this.unsubscribe = this.referenceChatMessages.orderBy("createdAt", "desc").onSnapshot(this.onCollectionUpdate)
                     }
 
                 });
@@ -132,10 +132,10 @@ export default class Chat extends React.Component {
         });
     }
 
-    // componentWillUnmount() {
-    //     this.authUnsubscribe();
-    //     this.unsubscribe();
-    // }
+    componentWillUnmount() {
+        this.authUnsubscribe();
+        this.unsubscribe();
+    }
 
 
 
