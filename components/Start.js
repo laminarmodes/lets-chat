@@ -30,7 +30,7 @@ export default class Start extends React.Component {
 
                     <BlurView
                         intensity={80}
-                        tint="light"
+                        tint="dark"
                         style={styles.blurContainer}>
 
                         <View>
@@ -99,7 +99,7 @@ const colorPickerCircleSize = 40;
 const circleMargin = 10;
 const sectionSpacing = 30;
 const atomicRadius = 4;
-const textColor = '#777';
+const textColor = '#eee';
 
 const styles = StyleSheet.create({
     container: {
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
         paddingLeft: 24,
         paddingRight: 24,
         paddingTop: 48,
-        paddingBottom: 48
+        paddingBottom: 48,
+        zIndex: 2,
     },
     leftAlignedContainer: {
         height: 'auto',
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
         color: textColor,
         marginTop: 16,
         marginBottom: 24,
+        zIndex: 1,
     },
     labels: {
         fontSize: 18,
@@ -147,7 +149,9 @@ const styles = StyleSheet.create({
         marginTop: atomicRadius,
         marginBottom: sectionSpacing,
         borderRadius: 4,
-        width: 200
+        width: 200,
+        paddingLeft: 20,
+        color: textColor
     },
     colorPicker: {
         flexDirection: 'row',
