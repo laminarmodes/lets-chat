@@ -122,7 +122,7 @@ export default class CustomActions extends React.Component {
         const imageName = imageNameBefore[imageNameBefore.length - 1];
 
         // Create a reference to the storage
-        const ref = firebase.storage().ref().child(`iamges/${imageName}`);
+        const ref = firebase.storage().ref().child(`images/${imageName}`);
 
         // Use put to store the content retrieved from the Ajax request
         const snapshot = await ref.put(blob);
