@@ -52,7 +52,7 @@ export default class Start extends React.Component {
                                 style={styles.userInput}
                                 onChangeText={(text) => this.setState({ name: text })}
                                 value={this.state.name}
-                                placeholder='Type name here...'
+                                placeholder='Type name...'
                             />
 
                             <Text style={styles.labels}>

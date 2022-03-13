@@ -7,11 +7,13 @@ import firebase from 'firebase';
 
 export default class CustomActions extends React.Component {
 
-    imagePicker = async () => {
+    results = () => {
+        granted = 'granted';
+    }
 
-        // Ask for permission
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    imagePicker = async () => {
         try {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
             if (status === 'granted') {
                 const result = await ImagePicker.launchImageLibraryAsync({
                     mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -30,8 +32,8 @@ export default class CustomActions extends React.Component {
     };
 
     takePhoto = async () => {
-        const { status } = await ImagePicker.requestCameraPermissionsAsync();
         try {
+            const { status } = await ImagePicker.requestCameraPermissionsAsync();
             if (status === 'granted') {
                 const result = await ImagePicker.launchCameraAsync({
                     mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -50,9 +52,8 @@ export default class CustomActions extends React.Component {
     };
 
     getLocation = async () => {
-
-        const { status } = await Location.requestForegroundPermissionsAsync();
         try {
+            const { status } = await Location.requestForegroundPermissionsAsync();
             if (status === 'granted') {
                 let result = await Location.getCurrentPositionAsync({}).catch((error) => console.log(error));
                 if (result) {

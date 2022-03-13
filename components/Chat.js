@@ -9,7 +9,7 @@ import MapView from 'react-native-maps';
 const firebase = require('firebase');
 require('firebase/firestore');
 
-import { collection, addDoc, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
+// import { collection, addDoc, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAzCN2Nfra9KQTtrn9J40haL5G9eMFR6Kk",
